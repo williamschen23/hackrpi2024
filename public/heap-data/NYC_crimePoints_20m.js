@@ -1,4 +1,4 @@
-export const crashPoints = [
+export const NYCcrimePoints = [
   { location: { lat: 40.73672168572534, lng: -73.91905635506419 }, weight: 3.4184064355487456 },
   { location: { lat: 40.72339204761064, lng: -73.91395576708338 }, weight: 3.404255319148936 },
   { location: { lat: 40.79055965550003, lng: -73.79482027949996 }, weight: 3.5 },
