@@ -18,8 +18,8 @@ function App() {
 
           {/* Routes */}
           <Grid2 justifyContent={"center"} alignItems={"center"} display={"flex"}>
-              <Box width={"100%"} height={"100%"}>
-                <MapView></MapView>
+              <Box width={"50%"} height={"100%"} alignItems={"center"} justifyContent={"center"}>
+                <MapView city={state}></MapView>
               </Box>
           </Grid2>
         </Grid2>
