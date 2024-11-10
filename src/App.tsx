@@ -16,16 +16,16 @@ function App() {
         <Header state={state} setState={setState} />
         <Box mt={2}>
           <Grid2 container spacing={1}>
-              <Grid2 size={5}>
-                <StateInformation state={state} setState={setState}/>
-              </Grid2>
+            <Grid2 size={5}>
+              <StateInformation state={state} setState={setState}/>
+            </Grid2>
 
             {/* Routes */}
-              <Grid2 size={7}>
-                <Box mr={1}>
-                  <MapView city={state}></MapView>
-                </Box>
-              </Grid2>
+            <Grid2 size={7}>
+              <Box mr={1}>
+                <MapView city={state}></MapView>
+              </Box>
+            </Grid2>
           </Grid2>
         </Box>
       </Container>

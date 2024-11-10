@@ -24,11 +24,11 @@ function MapView(props: MapViewProps) {
     };
 
     return (
-            <GoogleMap
-                mapContainerStyle={containerStyle}
-                center={props.city === "New York" ? NY_center : SF_center}
-                zoom={10}
-            />
+        <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={props.city === "New York" ? NY_center : SF_center}
+            zoom={10}
+        />
     )
 }
 
