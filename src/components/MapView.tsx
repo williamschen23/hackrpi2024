@@ -1,4 +1,4 @@
-import {LoadScript, GoogleMap} from "@react-google-maps/api"
+import {GoogleMap} from "@react-google-maps/api"
 import {Box} from "@mui/material";
 
 interface MapViewProps {
@@ -25,13 +25,11 @@ function MapView(props: MapViewProps) {
 
     return (
         <Box justifyContent="center" alignItems="center">
-            <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_API_KEY}>
-                <GoogleMap
-                    mapContainerStyle={containerStyle}
-                    center={props.city === "New York" ? NY_center : SF_center}
-                    zoom={8}
-                />
-            </LoadScript>
+            <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={props.city === "New York" ? NY_center : SF_center}
+                zoom={8}
+            />
         </Box>
     )
 }

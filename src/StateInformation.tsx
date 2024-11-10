@@ -2,7 +2,6 @@ import { Grid2, Typography, Button, Container } from '@mui/material';
 import { StateProp } from './models/StateProp'
 import PlacesAutocomplete from './components/PlacesAutocomplete';
 import { useState } from 'react';
-import { LoadScript } from '@react-google-maps/api';
 
 export default function StateInformation(props: StateProp) {
 	const [place1, setPlace1] = useState('');
@@ -13,11 +12,9 @@ export default function StateInformation(props: StateProp) {
 			{/* Autocomplete Container */}
 			<Grid2 size={6} justifyContent={"center"} alignItems={"center"} display={"flex"}>
 				<Container>
-					<LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_API_KEY} libraries={['places']}>
-						<PlacesAutocomplete selectedPlace={place1} setSelectedPlace={setPlace1} location={'From:'}></PlacesAutocomplete>
-						<PlacesAutocomplete selectedPlace={place2} setSelectedPlace={setPlace2} location={'To:'}></PlacesAutocomplete>
-						<Button>Submit</Button>
-					</LoadScript>
+					<PlacesAutocomplete selectedPlace={place1} setSelectedPlace={setPlace1} location={'From:'}></PlacesAutocomplete>
+					<PlacesAutocomplete selectedPlace={place2} setSelectedPlace={setPlace2} location={'To:'}></PlacesAutocomplete>
+					<Button>Submit</Button>
 				</Container>
 			</Grid2>
 

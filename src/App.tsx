@@ -3,6 +3,7 @@ import { useState } from "react";
 import StateInformation from "./StateInformation";
 import Header from "./components/Header";
 import MapView from "./components/MapView";
+import { LoadScript } from "@react-google-maps/api";
 
 
 
@@ -10,21 +11,23 @@ function App() {
   const [state, setState] = useState('New York');
 
   return (
-    <Container disableGutters maxWidth={false} className="container">
-      <Header state={state} setState={setState} />
-      <Box flexGrow={1} mt={5}>
-        <Grid2 container spacing={2} direction={"column"}>
-          <StateInformation state={state} setState={setState}/>
+    <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_API_KEY} libraries={['places']}>
+      <Container disableGutters maxWidth={false} className="container">
+        <Header state={state} setState={setState} />
+        <Box flexGrow={1} mt={5}>
+          <Grid2 container spacing={2} direction={"column"}>
+            <StateInformation state={state} setState={setState}/>
 
-          {/* Routes */}
-          <Grid2 justifyContent={"center"} alignItems={"center"} display={"flex"}>
-              <Box width={"50%"} height={"100%"} alignItems={"center"} justifyContent={"center"}>
-                <MapView city={state}></MapView>
-              </Box>
+            {/* Routes */}
+            <Grid2 justifyContent={"center"} alignItems={"center"} display={"flex"}>
+                <Box width={"50%"} height={"100%"} alignItems={"center"} justifyContent={"center"}>
+                  <MapView city={state}></MapView>
+                </Box>
+            </Grid2>
           </Grid2>
-        </Grid2>
-      </Box>
-    </Container>
+        </Box>
+      </Container>
+    </LoadScript>
   )
 }
 
