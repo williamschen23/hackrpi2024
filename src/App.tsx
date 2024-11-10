@@ -12,6 +12,7 @@ function App() {
   const [mobilityType, setMobilityType] = useState("walking")
   const [placeFrom, setPlaceFrom] = useState('');
   const [placeTo, setPlaceTo] = useState('');
+  const [searchButton, setSearchButton] = useState(0);
 
   return (
     <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_API_KEY} libraries={['places', 'visualization']}>
@@ -28,13 +29,19 @@ function App() {
                                 setPlaceFrom={setPlaceFrom}
                                 placeTo={placeTo}
                                 setPlaceTo={setPlaceTo}
+                                searchButton={searchButton}
+                                setSearchButton={setSearchButton}
               />
             </Grid2>
 
             {/* Routes */}
             <Grid2 size={7}>
               <Box mr={1}>
-                <MapView city={state}></MapView>
+                <MapView city={state}
+                    placeFrom={placeFrom}
+                    placeTo={placeTo}
+                    mobilityType={mobilityType}
+                    searchButton={searchButton}></MapView>
               </Box>
             </Grid2>
           </Grid2>

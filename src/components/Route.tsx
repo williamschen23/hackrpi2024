@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   GoogleMap,
-  LoadScript,
   DirectionsRenderer,
 } from "@react-google-maps/api";
 
@@ -19,7 +18,7 @@ const fromLocation = { lat: 37.7749, lng: -122.4194 };
 const toLocation = { lat: 37.7751, lng: -122.4196 };
 
 const Route = () => {
-  const [directions, setDirections] = useState<any>(null);
+  const [directions, setDirections] = useState<google.maps.DirectionsResult| null>(null);
   const [steps, setSteps] = useState<string[]>([]);
   const [option, setOption] = useState("DRIVING");
 
@@ -31,9 +30,7 @@ const Route = () => {
         origin: fromLocation,
         destination: toLocation,
         travelMode:
-          option === "DRIVING"
-            ? google.maps.TravelMode.DRIVING
-            : google.maps.TravelMode.WALKING,
+          option === "DRIVING" ? google.maps.TravelMode.DRIVING : google.maps.TravelMode.WALKING,
       },
       (response, status) => {
         if (status === "OK") {
@@ -67,13 +64,9 @@ const Route = () => {
   return (
     <>
       {directions && steps.map((step, index) => <h3 key={index}>{step}</h3>)}
-      <LoadScript
-        googleMapsApiKey="" // Replace with your API Key
-      >
-        <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={7}>
-          {directions && <DirectionsRenderer directions={directions} />}
-        </GoogleMap>
-      </LoadScript>
+      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={7}>
+        {directions && <DirectionsRenderer directions={directions} />}
+      </GoogleMap>
       <button onClick={showDirection}>Directions</button>
 
       <input
