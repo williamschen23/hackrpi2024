@@ -12,7 +12,7 @@ export default function Header(props: StateProp) {
 						width: 80,
 						pointerEvents: "none"
 					}}></Box>
-					<Typography variant="h3" sx={{
+					<Typography fontFamily={"Whitney SSm A"} variant="h3" sx={{
 						flexGrow: 1, ml: 2
 					}}>Home Safe</Typography>
 					<Fab sx={{ bgcolor: props.state === "New York" ? "#8bd9a3" : "#D2F4DD", boxShadow: "1"}} variant="extended" size="large" onClick={() => {

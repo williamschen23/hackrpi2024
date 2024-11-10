@@ -1,4 +1,17 @@
-import {Grid2, Typography, Box, Container, Fab, Stack, Select, MenuItem, Rating, Alert, Snackbar} from '@mui/material';
+import {
+	Grid2,
+	Typography,
+	Box,
+	Container,
+	Fab,
+	Stack,
+	Select,
+	MenuItem,
+	Rating,
+	Alert,
+	Snackbar,
+	Grid
+} from '@mui/material';
 import PlacesAutocomplete from './components/PlacesAutocomplete';
 import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import MapComponent from "./heatmap.tsx";
@@ -20,6 +33,7 @@ interface StateInformationProp {
 export default function StateInformation(props: StateInformationProp) {
 	const [starRating, setStarRating] = useState<number | null>(0);
 	const [alert, setAlert] = useState<boolean>(false)
+	const [prevRating, setPrevRating] = useState<number | null>(0);
 
 	useEffect(() => {setStarRating(0)}, [alert])
   return (
@@ -37,19 +51,32 @@ export default function StateInformation(props: StateInformationProp) {
 						<PlacesAutocomplete selectedPlace={props.placeTo} setSelectedPlace={props.setPlaceTo} location={'To:'}></PlacesAutocomplete>
 						<Fab onClick= {()=>{
 							props.setSearchButton(props.searchButton+1);
-							setAlert(false)
+							setAlert(false);
+							setPrevRating(Math.floor(Math.random() * 5))
 						}}sx={{ bgcolor: (props.placeFrom ==='' || props.placeTo ==='') ? '' : "#9ac8d9" }} variant={"extended"} ><Box fontWeight='fontWeightMedium'><Typography variant={"body1"} >Find a route!</Typography></Box></Fab>
-						<Typography>Review your route here:</Typography>
-						{props.searchButton >= 0 && <Rating
-							name="simple-controlled"
-							value={starRating}
-							defaultValue={0}
-							onClick = {() => {setAlert(true)
-							}}
-							onChange={(event, newValue) => {
-								setStarRating(newValue);
-							}}
-						/>}
+
+						<Grid2>
+							<Grid2>
+								<Typography>Review your route here:</Typography>
+								{props.searchButton >= 0 && <Rating
+									name="simple-controlled"
+									value={starRating}
+									defaultValue={0}
+									onClick = {() => {setAlert(true)
+									}}
+									onChange={(event, newValue) => {
+										setStarRating(newValue);
+									}}
+								/>}
+							</Grid2>
+							<Grid2>
+								<Typography>Other Users have rated this route:</Typography>
+								{props.searchButton >= 0 && <Rating
+									name="read-only"
+									value={prevRating}
+								/>}
+							</Grid2>
+						</Grid2>
 
 						{alert &&
 							<Snackbar
