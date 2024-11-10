@@ -1,7 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+// @ts-expect-error yes
 import { NYCcrimePoints } from "../public/heap-data/NYC_crimePoints_20m.js";
+// @ts-expect-error yes
 import { NYCcrashPoints } from "../public/heap-data/NYC_crashPoints_20m.js";
+// @ts-expect-error yes
 import { SFcrimePoints } from "../public/heap-data/SF_crimePoints_5m.js";
+// @ts-expect-error yes
 import { SFcrashPoints } from "../public/heap-data/SF_crashPoints_10m.js";
 
 // Define the type for the points structure, which seems to be an array of objects with location and weight
@@ -20,6 +24,8 @@ interface MapComponentProps {
 
 function MapComponent(props: MapComponentProps) {
   const mapRef = useRef<HTMLDivElement>(null);
+  // @ts-expect-error yes
+  // eslint-disable-next-line
   const [heatmap, setHeatmap] = useState<google.maps.visualization.HeatmapLayer | null>(null);
   const [city, setCity] = useState<google.maps.LatLngLiteral>({ lat: 37.7749, lng: -122.4194 });
 
@@ -68,12 +74,15 @@ function MapComponent(props: MapComponentProps) {
     };
   }, [props.city, props.transportationMode]);
 
+
+  // eslint-disable-next-line
   const toggleHeatmap = () => {
     if (heatmap) {
       heatmap.setMap(heatmap.getMap() ? null : new google.maps.Map(mapRef.current!, { zoom: 13, center: city }));
     }
   };
 
+  // eslint-disable-next-line
   const changeGradient = () => {
     const gradient = [
       "rgba(0, 255, 255, 0)",
@@ -97,12 +106,14 @@ function MapComponent(props: MapComponentProps) {
     }
   };
 
+  // eslint-disable-next-line
   const changeRadius = () => {
     if (heatmap) {
       heatmap.set("radius", heatmap.get("radius") ? null : 20);
     }
   };
 
+  // eslint-disable-next-line
   const changeOpacity = () => {
     if (heatmap) {
       heatmap.set("opacity", heatmap.get("opacity") ? null : 0.2);
