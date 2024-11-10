@@ -13,32 +13,39 @@ interface Point {
   weight: number;
 }
 
-const MapComponent: React.FC = () => {
+interface MapComponentProps {
+  city: string;
+  transportationMode: string;
+}
+
+function MapComponent(props: MapComponentProps) {
   const mapRef = useRef<HTMLDivElement>(null);
   const [heatmap, setHeatmap] = useState<google.maps.visualization.HeatmapLayer | null>(null);
-  const [city, setCity] = useState<google.maps.LatLngLiteral>({ lat: 40.7128, lng: -74.006 });
+  const [city, setCity] = useState<google.maps.LatLngLiteral>({ lat: 37.7749, lng: -122.4194 });
 
   useEffect(() => {
     if (!mapRef.current) return;
 
     const map = new google.maps.Map(mapRef.current, {
-      zoom: 13,
+      zoom: 11,
       center: city,
       mapTypeId: "satellite",
     });
 
     let data: Point[] = [];
 
-    if (/* condition for SF */) {
-        setCity({ lat: 37.7749, lng: -122.4194 });
+    if (props.city === "San Francisco") {
+      setCity({ lat: 40.7128, lng: -74.006 });
+    } else {
+      setCity({ lat: 37.7749, lng: -122.4194 });
     }
 
     // Set the data based on the city (for simplicity, assuming this logic is tied to a city selector)
-    if (/* condition for SF */) {
+    if (props.city === "San Francisco" && props.transportationMode == "walking") {
       data = SFcrimePoints;
-    } else if (/* condition for NYC Accidents */) {
+    } else if (props.city === "New York" && props.transportationMode == "driving") {
       data = NYCcrashPoints;
-    } else if (/* condition for SF Accidents */) {
+    } else if (props.city === "San Francisco" && props.transportationMode == "driving") {
       data = SFcrashPoints;
     } else {
       data = NYCcrimePoints;
@@ -53,14 +60,13 @@ const MapComponent: React.FC = () => {
       data: heatmapData,
       map,
       maxIntensity: 3,
+      radius: 1.5
     });
-
-    setHeatmap(heatmapLayer);
 
     return () => {
       heatmapLayer.setMap(null); // Clean up the heatmap layer on unmount
     };
-  }, [city]);
+  }, [props.city, props.transportationMode]);
 
   const toggleHeatmap = () => {
     if (heatmap) {
@@ -105,12 +111,12 @@ const MapComponent: React.FC = () => {
 
   return (
     <>
-    <div>
-      <button onClick={toggleHeatmap}>Toggle Heatmap</button>
-      <button onClick={changeGradient}>Change Gradient</button>
-      <button onClick={changeOpacity}>Change Opacity</button>
-      <button onClick={changeRadius}>Change Radius</button>
-    </div>
+    {/*<div>*/}
+    {/*  <button onClick={toggleHeatmap}>Toggle Heatmap</button>*/}
+    {/*  <button onClick={changeGradient}>Change Gradient</button>*/}
+    {/*  <button onClick={changeOpacity}>Change Opacity</button>*/}
+    {/*  <button onClick={changeRadius}>Change Radius</button>*/}
+    {/*</div>*/}
       <div id="map" ref={mapRef} style={{ height: "400px", width: "100%" }}></div>
     </>
   );
