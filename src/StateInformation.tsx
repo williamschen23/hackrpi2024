@@ -15,7 +15,7 @@ export default function StateInformation(props: StateProp) {
 					<Stack spacing={2}>
 						<PlacesAutocomplete selectedPlace={place1} setSelectedPlace={setPlace1} location={'From:'}></PlacesAutocomplete>
 						<PlacesAutocomplete selectedPlace={place2} setSelectedPlace={setPlace2} location={'To:'}></PlacesAutocomplete>
-						<Fab sx={{ bgcolor: (place1 ==='' || place2 ==='') ? '' : "#9ac8d9" }} variant={"extended"} ><Typography variant={"body1"} ><Box fontWeight='fontWeightMedium'>Submit</Box></Typography></Fab>
+						<Fab sx={{ bgcolor: (place1 ==='' || place2 ==='') ? '' : "#9ac8d9" }} variant={"extended"} ><Box fontWeight='fontWeightMedium'><Typography variant={"body1"} >Submit</Typography></Box></Fab>
 					</Stack>
 				</Container>
 			</Grid2>
