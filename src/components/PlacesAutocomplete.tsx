@@ -16,7 +16,7 @@ export default function PlacesAutocomplete(props: PlacesProp) {
     <Autocomplete
       id='PlacesAutocomplete'
       options={data}
-      sx={{width: 400}}
+      sx={{width: "100%"}}
       getOptionLabel={(option) =>
         typeof option === 'string' ? option : option.description
       }
