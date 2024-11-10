@@ -1,5 +1,5 @@
 import {GoogleMap} from "@react-google-maps/api"
-import {Box} from "@mui/material";
+// import {Box} from "@mui/material";
 
 interface MapViewProps {
     city: string;
@@ -8,7 +8,7 @@ interface MapViewProps {
 function MapView(props: MapViewProps) {
     const containerStyle = {
         width: "100%",
-        height: "450px",
+        height: "88vh",
         justifyContent: "center",
         borderWidth: "20px",
     };
@@ -24,13 +24,11 @@ function MapView(props: MapViewProps) {
     };
 
     return (
-        <Box justifyContent="center" alignItems="center">
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={props.city === "New York" ? NY_center : SF_center}
-                zoom={8}
+                zoom={10}
             />
-        </Box>
     )
 }
 

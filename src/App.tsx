@@ -14,16 +14,18 @@ function App() {
     <LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_API_KEY} libraries={['places']}>
       <Container disableGutters maxWidth={false} className="container">
         <Header state={state} setState={setState} />
-        <Box flexGrow={1} mt={5}>
-          <Grid2 container spacing={2} direction={"column"}>
-            <StateInformation state={state} setState={setState}/>
+        <Box mt={2}>
+          <Grid2 container spacing={1}>
+              <Grid2 size={5}>
+                <StateInformation state={state} setState={setState}/>
+              </Grid2>
 
             {/* Routes */}
-            <Grid2 justifyContent={"center"} alignItems={"center"} display={"flex"}>
-                <Box width={"50%"} height={"100%"} alignItems={"center"} justifyContent={"center"}>
+              <Grid2 size={7}>
+                <Box mr={1}>
                   <MapView city={state}></MapView>
                 </Box>
-            </Grid2>
+              </Grid2>
           </Grid2>
         </Box>
       </Container>
