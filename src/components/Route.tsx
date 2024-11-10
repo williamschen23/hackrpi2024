@@ -68,7 +68,7 @@ const Route = () => {
     <>
       {directions && steps.map((step, index) => <h3 key={index}>{step}</h3>)}
       <LoadScript
-        googleMapsApiKey="AIzaSyDcFCvWHXHDKZjB-SN6Ge-Fszk8Zuw8qJI" // Replace with your API Key
+        googleMapsApiKey="" // Replace with your API Key
       >
         <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={7}>
           {directions && <DirectionsRenderer directions={directions} />}
