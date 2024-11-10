@@ -3,8 +3,6 @@ import usePlacesAutocomplete from 'use-places-autocomplete';
 import { PlacesProp } from '../models/PlacesProp';
 
 export default function PlacesAutocomplete(props: PlacesProp) {
-
-  
   const { setValue, suggestions: { data }} = usePlacesAutocomplete({debounce: 300})
   
   function settingValues(newValue: string){
