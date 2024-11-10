@@ -1,5 +1,5 @@
 import { AppBar, Box, Toolbar, Fab, Container, Typography } from '@mui/material';
-import logo from '/logo.png'
+import logo from '/logo-removebg-preview.png'
 import { StateProp } from '../models/StateProp';
 
 export default function Header(props: StateProp){
@@ -8,8 +8,8 @@ export default function Header(props: StateProp){
         <Container maxWidth={false}>
             <Toolbar disableGutters sx={{width:"100%"}}>
             <Box component={"img"} src={logo} sx={{
-                height: 40,
-                width: 40,
+                height: 60,
+                width: 60,
                 pointerEvents: "none"
             }}></Box>
             <Typography sx={{
