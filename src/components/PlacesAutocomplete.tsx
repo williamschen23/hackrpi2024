@@ -20,7 +20,7 @@ export default function PlacesAutocomplete(props: PlacesProp) {
       getOptionLabel={(option) =>
         typeof option === 'string' ? option : option.description
       }
-      renderInput = {(params) => <TextField {...params} label="Something"></TextField>}
+      renderInput = {(params) => <TextField {...params} label={props.location}></TextField>}
       onInputChange={(_, newValue) => settingValues(newValue)}
     />
   )

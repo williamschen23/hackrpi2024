@@ -14,10 +14,8 @@ export default function StateInformation(props: StateProp) {
 			<Grid2 size={6} justifyContent={"center"} alignItems={"center"} display={"flex"}>
 				<Container>
 					<LoadScript googleMapsApiKey={import.meta.env.VITE_GOOGLE_API_KEY} libraries={['places']}>
-						<Typography>From:</Typography>
-						<PlacesAutocomplete selectedPlace={place1} setSelectedPlace={setPlace1}></PlacesAutocomplete>
-						<Typography>To:</Typography>
-						<PlacesAutocomplete selectedPlace={place2} setSelectedPlace={setPlace2}></PlacesAutocomplete>
+						<PlacesAutocomplete selectedPlace={place1} setSelectedPlace={setPlace1} location={'From:'}></PlacesAutocomplete>
+						<PlacesAutocomplete selectedPlace={place2} setSelectedPlace={setPlace2} location={'To:'}></PlacesAutocomplete>
 						<Button>Submit</Button>
 					</LoadScript>
 				</Container>
