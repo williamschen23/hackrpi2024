@@ -1,5 +1,5 @@
 import { Grid2, Typography, Button } from '@mui/material';
-import { StateProp } from './model/StateProp'
+import { StateProp } from './models/StateProp'
 
 export default function StateInformation(props: StateProp) {
   return (

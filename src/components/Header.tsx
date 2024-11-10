@@ -1,6 +1,6 @@
 import { AppBar, Box, Toolbar, Fab, Container, Typography } from '@mui/material';
 import logo from '/logo.png'
-import { StateProp } from '../model/StateProp';
+import { StateProp } from '../models/StateProp';
 
 export default function Header(props: StateProp){
     return (
