@@ -8,9 +8,7 @@ import {
 	Select,
 	MenuItem,
 	Rating,
-	Alert,
 	Snackbar,
-	Grid
 } from '@mui/material';
 import PlacesAutocomplete from './components/PlacesAutocomplete';
 import {Dispatch, SetStateAction, useEffect, useState} from 'react';
@@ -64,7 +62,8 @@ export default function StateInformation(props: StateInformationProp) {
 									defaultValue={0}
 									onClick = {() => {setAlert(true)
 									}}
-									onChange={(event, newValue) => {
+									
+									onChange={(_, newValue) => {
 										setStarRating(newValue);
 									}}
 								/>}

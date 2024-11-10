@@ -72,53 +72,8 @@ function MapComponent(props: MapComponentProps) {
     return () => {
       heatmapLayer.setMap(null); // Clean up the heatmap layer on unmount
     };
+    // eslint-disable-next-line
   }, [props.city, props.transportationMode]);
-
-
-  // eslint-disable-next-line
-  const toggleHeatmap = () => {
-    if (heatmap) {
-      heatmap.setMap(heatmap.getMap() ? null : new google.maps.Map(mapRef.current!, { zoom: 13, center: city }));
-    }
-  };
-
-  // eslint-disable-next-line
-  const changeGradient = () => {
-    const gradient = [
-      "rgba(0, 255, 255, 0)",
-      "rgba(0, 255, 255, 1)",
-      "rgba(0, 191, 255, 1)",
-      "rgba(0, 127, 255, 1)",
-      "rgba(0, 63, 255, 1)",
-      "rgba(0, 0, 255, 1)",
-      "rgba(0, 0, 223, 1)",
-      "rgba(0, 0, 191, 1)",
-      "rgba(0, 0, 159, 1)",
-      "rgba(0, 0, 127, 1)",
-      "rgba(63, 0, 91, 1)",
-      "rgba(127, 0, 63, 1)",
-      "rgba(191, 0, 31, 1)",
-      "rgba(255, 0, 0, 1)",
-    ];
-
-    if (heatmap) {
-      heatmap.set("gradient", heatmap.get("gradient") ? null : gradient);
-    }
-  };
-
-  // eslint-disable-next-line
-  const changeRadius = () => {
-    if (heatmap) {
-      heatmap.set("radius", heatmap.get("radius") ? null : 20);
-    }
-  };
-
-  // eslint-disable-next-line
-  const changeOpacity = () => {
-    if (heatmap) {
-      heatmap.set("opacity", heatmap.get("opacity") ? null : 0.2);
-    }
-  };
 
   return (
     <>

@@ -47,6 +47,7 @@ function MapView(props: MapViewProps) {
                 }
             )
         }
+        // eslint-disable-next-line
     }, [props.searchButton])
 
     return (
