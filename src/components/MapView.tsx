@@ -32,7 +32,6 @@ function MapView(props: MapViewProps) {
     const directionsService = new google.maps.DirectionsService();
 
     useEffect(()=> {
-        console.log(props.mobilityType)
         if(props.searchButton !== 0){
             directionsService.route(
                 {

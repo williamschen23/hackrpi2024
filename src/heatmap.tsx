@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-// @ts-expect-error yes
-import { NYCcrimePoints } from "../public/heap-data/NYC_crimePoints_20m.js";
-// @ts-expect-error yes
-import { NYCcrashPoints } from "../public/heap-data/NYC_crashPoints_20m.js";
-// @ts-expect-error yes
-import { SFcrimePoints } from "../public/heap-data/SF_crimePoints_5m.js";
-// @ts-expect-error yes
-import { SFcrashPoints } from "../public/heap-data/SF_crashPoints_10m.js";
+import NYCcrimePoints from "../public/heap-data/NYC_crimePoints_20m.json";
+import NYCcrashPoints from "../public/heap-data/NYC_crashPoints_20m.json";
+import SFcrimePoints from "../public/heap-data/SF_crimePoints_5m.json";
+import SFcrashPoints from "../public/heap-data/SF_crashPoints_10m.json";
+
+const NYCcrimePointsTyped: Point[] = NYCcrimePoints as Point[];
+const NYCcrashPointsTyped: Point[] = NYCcrashPoints as Point[];
+const SFcrimePointsTyped: Point[] = SFcrimePoints as Point[];
+const SFcrashPointsTyped: Point[] = SFcrashPoints as Point[];
 
 // Define the type for the points structure, which seems to be an array of objects with location and weight
 interface Point {
@@ -38,7 +39,7 @@ function MapComponent(props: MapComponentProps) {
       mapTypeId: "satellite",
     });
 
-    let data: Point[] = [];
+    let data = [];
 
     if (props.city === "San Francisco") {
       setCity({ lat: 40.7128, lng: -74.006 });
@@ -48,16 +49,16 @@ function MapComponent(props: MapComponentProps) {
 
     // Set the data based on the city (for simplicity, assuming this logic is tied to a city selector)
     if (props.city === "San Francisco" && props.transportationMode == "walking") {
-      data = SFcrimePoints;
+      data = SFcrimePointsTyped;
     } else if (props.city === "New York" && props.transportationMode == "driving") {
-      data = NYCcrashPoints;
+      data = NYCcrashPointsTyped;
     } else if (props.city === "San Francisco" && props.transportationMode == "driving") {
-      data = SFcrashPoints;
+      data = SFcrashPointsTyped;
     } else {
-      data = NYCcrimePoints;
+      data = NYCcrimePointsTyped;
     }
 
-    const heatmapData = data.map((point) => ({
+    const heatmapData = data.map((point: Point) => ({
       location: new google.maps.LatLng(point.location.lat, point.location.lng),
       weight: point.weight,
     }));
